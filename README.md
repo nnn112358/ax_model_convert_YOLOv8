@@ -8,42 +8,6 @@ yolov9とyolov10のプログラムの実行に必要なモデルの変換を行�
 
 https://github.com/AXERA-TECH/ax-samples/
 
-### 注意点；
-ax_yolov8_seg_steps.ccで生成したバイナリax_yolov8_segを使って、
-実行すると、Segmentation fault エラーが発生する。
-```
-# ./ax_yolov8_seg -i m52.jpg -m yolov8n-seg.axmodel
---------------------------------------
-model file : yolov8n-seg.axmodel
-image file : m52.jpg
-img_h, img_w : 640 640
---------------------------------------
-Engine creating handle is done.
-Engine creating context is done.
-Engine get io info is done.
-Engine alloc io is done.
-Engine push input is done.
---------------------------------------
-input size: 1
-    name:   images [UINT8] [BGR]
-        1 x 640 x 640 x 3
-output size: 6
-    name: /model.22/Concat_1_output_0 [FLOAT32]
-        1 x 80 x 80 x 144
-    name: /model.22/Concat_2_output_0 [FLOAT32]
-        1 x 40 x 40 x 144
-    name: /model.22/Concat_3_output_0 [FLOAT32]
-        1 x 20 x 20 x 144
-    name: /model.22/cv4.0/cv4.0.2/Conv_output_0 [FLOAT32]
-        1 x 80 x 80 x 32
-    name: /model.22/cv4.1/cv4.1.2/Conv_output_0 [FLOAT32]
-        1 x 40 x 40 x 32
-    name: /model.22/cv4.2/cv4.2.2/Conv_output_0 [FLOAT32]
-        1 x 20 x 20 x 32
-Segmentation fault (core dumped)
-```
-
-
 ### Dockerの起動
 
 Dockerに、Pulsar2のイメージをロード。
@@ -84,8 +48,8 @@ model/yolov10n.axmodel  model/yolov10s.axmodel  model/yolov9s.axmodel  model/yol
 
 もしくは、pulsar2 buildを実行
 ```
-pulsar2 build --input model/yolo11m-cut.onnx --output_dir output --config config/yolo11-config.json --target_hardware AX620E
-cp output/compiled.axmodel model/yolo11m.axmodel
+pulsar2 build --input model/yolov8n-cut.onnx --output_dir output --config config/yolov8-config.json --target_hardware AX620E
+cp output/compiled.axmodel model/yolov8n.axmodel
 ```
 
 ### M5Stack Module-LLMでの実行
@@ -93,11 +57,8 @@ cp output/compiled.axmodel model/yolo11m.axmodel
  Module-LLMにコピーして、実行。
  
 ```
-./ax_yolov10_u -i m52.jpg -m yolov10s.axmodel
-./ax_yolov10_u -i m52.jpg -m yolov10m.axmodel
-./ax_yolov10_u -i m52.jpg -m yolov10n.axmodel
-./ax_yolov10_u -i m52.jpg -m yolov10n.axmodel
-./ax_yolov9_u -i m52.jpg -m yolov9t.axmodel
-./ax_yolov9_u -i m52.jpg -m yolov9s.axmodel
+./ax_yolov8 -i m52.jpg -m yolov8s.axmodel
+./ax_yolov8_pose -i m52.jpg -m yolov8s-pose.axmodel
+./ax_yolov8_seg -i m52.jpg -m yolov8s-seg.axmodel
 ```
 
