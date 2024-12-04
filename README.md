@@ -29,10 +29,10 @@ $ pip install ultralytics
 以下のPythonプログラムを実行。
 
 ```
-$ python yolov10_download.py
-$ python yolov10_cut-onnx.py
-$ python yolov9_cut-onnx.py
-$ python yolov9_download.py
+$ python yolov8_download.py
+$ python yolov8_cut-onnx.py
+$ python yolov8_pose_cut-onnx.py
+$ python yolov8_seg_cut-onnx.py
 ```
 
 dockerでpulsar2を起動してスクリプトを実行。
