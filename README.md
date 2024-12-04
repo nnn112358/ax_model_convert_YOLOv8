@@ -47,6 +47,11 @@ axmodelを生成
 model/yolov10n.axmodel  model/yolov10s.axmodel  model/yolov9s.axmodel  model/yolov9t.axmodel
 ```
 
+もしくは、pulsar2 buildを実行
+```
+pulsar2 build --input model/yolo11m-cut.onnx --output_dir output --config config/yolo11-config.json --target_hardware AX620E
+cp output/compiled.axmodel model/yolo11m.axmodel
+```
 
 ### M5Stack Module-LLMでの実行
 
