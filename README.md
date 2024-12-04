@@ -3,7 +3,7 @@
 
 ### 目的
 [axera-tech](https://github.com/AXERA-TECH/ax-samples/)のサンプルプログラムの内、
-yolov9とyolov10のプログラムの実行に必要なモデルの変換を行う。
+yolov8のプログラムの実行に必要なモデルの変換を行う。
 ソースコードは、ax620e/ax_yolov8_steps.cc、ax_yolov8_pose_steps.cc、ax_yolov8_seg_steps.ccに対応する。
 
 https://github.com/AXERA-TECH/ax-samples/
